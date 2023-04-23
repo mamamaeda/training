@@ -11,9 +11,23 @@ jobs:
       - name: Checkout
         uses: actions/checkout@main  # リポジトリをチェックアウト
 
+      - name: Setup node
+        uses: actions/setup-node
+        with:
+          node-version: '18'
+          
+      - name: Install Dependencies
+        run: npm install
+
+      - name: Build
+        run: npm build
+
       - name: Deploy  # S3にデプロイ 
         env:
           AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY }}
           AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
         run: |
           aws s3 sync --region ap-northeast-1 . s3://tmamamaeda-firstbucket --delete
+          echo "AWS s3 sync"
+          aws s3 sync --region ap-northeast-1 ./out s3://tmamamaeda-firstbucket --delete
+
