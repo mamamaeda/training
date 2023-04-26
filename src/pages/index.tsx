@@ -7,6 +7,9 @@ export default function Home() {
    <main>
     <div>
       <h1>Test</h1>
+      <button onClick={()=>{
+        console.error("This is test error message.")
+      }}>Test AWS RUM</button>
     </div>
    </main>
   )
