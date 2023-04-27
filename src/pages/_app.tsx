@@ -1,6 +1,7 @@
 import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { AwsRum, AwsRumConfig } from 'aws-rum-web';
+import ErrorBoundary from './ErrorBoundary';
 
 export let awsRum: AwsRum | null = null;
 
@@ -30,5 +31,7 @@ try {
 }
 
 export default function App({ Component, pageProps }: AppProps) {
-  return <Component {...pageProps} />
+  return <ErrorBoundary>
+           <Component {...pageProps} />
+        </ErrorBoundary>
 }
