@@ -2,7 +2,7 @@ import '@/styles/globals.css'
 import type { AppProps } from 'next/app'
 import { AwsRum, AwsRumConfig } from 'aws-rum-web';
 
-let awsRum: AwsRum | null = null;
+export let awsRum: AwsRum | null = null;
 
 try {
   const config: AwsRumConfig = {
