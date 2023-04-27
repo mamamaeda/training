@@ -8,7 +8,6 @@ export default function Home() {
     <div>
       <h1>Test</h1>
       <button onClick={()=>{
-        console.error("This is test error message.")
         throw new Error("This is test error from index.tsx");
       }}>Test AWS RUM</button>
     </div>

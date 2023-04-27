@@ -4,6 +4,7 @@ import { awsRum } from "./_app";
 type ErrorBoundaryProps = {
     children?: React.ReactNode;
   };
+
 class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: boolean }> {
     constructor(props: {}) {
       super(props);
@@ -17,9 +18,7 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: bool
     }
   
     componentDidCatch(error: Error, errorInfo: ErrorInfo): void {
-      console.log(error);
-      console.log(errorInfo);
-      awsRum?.recordError(new Error("This is test error message."));
+      awsRum?.recordError(error);
     }
   
     render() {
@@ -30,4 +29,4 @@ class ErrorBoundary extends React.Component<ErrorBoundaryProps, { hasError: bool
     }
   }
   
-  export default ErrorBoundary;
+export default ErrorBoundary;
